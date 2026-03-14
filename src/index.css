@@ -1,0 +1,42 @@
+@import "tailwindcss";
+body{
+    background-color: #FAFBFC;
+    }
+
+.center{
+    width: 65%;
+    height: 100vh;
+    margin: auto;
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+::selection {
+  background-color: #2E7D6B;
+  color: white;
+}
+
+
+/* Theme */
+
+
+[data-theme="dark"] {
+  --bg: #0f172a;
+  --text: #f8fafc;
+  --card: #1e293b;
+  --border: #334155;
+  --primary: #4ade80;
+  --muted: #94a3b8;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+}
+.card {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  color: white;
+}
