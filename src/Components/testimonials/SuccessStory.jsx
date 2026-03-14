@@ -2,7 +2,7 @@ import TestimonialCard from "./TestimonialCard";
 import img1 from "../../../public/img/3d-muslim-woman-avatar-free-png.png";
 import img2 from "../../../public/img/cartoon-female-teacher-avatar-in-a-smart-outfit-with-glasses-ready-to-educate-students-with-enthusiasm-3d-cartoon-female-teacher-educator-avatar-isolated-on-transparent-background-free-png.png";
 import img3 from "../../../public/img/stylish-spectacles-guy-3d-avatar-character-illustrations-png.png";
-import { useTheme } from "../../context/ThemeContext";
+import { useTheme } from "../../Context/ThemeContext";
 
 const testimonials = [
   {

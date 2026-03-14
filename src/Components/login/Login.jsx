@@ -6,7 +6,6 @@ import { Link } from "react-router";
 import { useTheme } from "../../Context/ThemeContext";
 import { GiStairsGoal } from "react-icons/gi";
 
-
 const Login = () => {
   const { theme } = useTheme();
   const isDark = theme === "dark";
@@ -22,7 +21,7 @@ const Login = () => {
           name: user.displayName,
           email: user.email,
           avatar: user.photoURL,
-        })
+        }),
       );
     } catch (error) {
       console.error("Google Login Error:", error);
@@ -153,9 +152,7 @@ const Login = () => {
             <div className="flex flex-col items-start gap-3 text-sm sm:flex-row sm:items-center sm:justify-between sm:text-base">
               <div className="flex items-center">
                 <input className="mx-2" type="checkbox" />
-                <label
-                  style={{ color: isDark ? "#cbd5e1" : "#374151" }}
-                >
+                <label style={{ color: isDark ? "#cbd5e1" : "#374151" }}>
                   Keep me signed in
                 </label>
               </div>

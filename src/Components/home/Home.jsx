@@ -3,7 +3,6 @@ import Hero from '../hero/Hero'
 import Feature from '../feature/Feature'
 import Mentor from '../mentor/Mentor'
 import HowWorks from '../howItWorks/HowWorks'
-import TestimonialCard from '../testimonials/TestimonialCard'
 import SuccessStories from '../testimonials/SuccessStory'
 
 const Home = () => {
