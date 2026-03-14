@@ -1,31 +1,43 @@
 import { FaGoogle } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
 import { signInWithPopup } from "firebase/auth";
-import { auth, provider } from "../../firebase";
+import { auth, googleProvider, githubProvider } from "../../firebase";
 import { Link } from "react-router";
 import { useTheme } from "../../Context/ThemeContext";
 import { GiStairsGoal } from "react-icons/gi";
-
 
 const SignUp = () => {
   const { theme } = useTheme();
   const isDark = theme === "dark";
 
+  const saveUserToLocalStorage = (user) => {
+    localStorage.setItem(
+      "user",
+      JSON.stringify({
+        name: user.displayName || "User",
+        email: user.email || "",
+        avatar: user.photoURL || "",
+      })
+    );
+  };
+
   const handleGoogleLogin = async () => {
     try {
-      const result = await signInWithPopup(auth, provider);
+      const result = await signInWithPopup(auth, googleProvider);
       const user = result.user;
-
-      localStorage.setItem(
-        "user",
-        JSON.stringify({
-          name: user.displayName,
-          email: user.email,
-          avatar: user.photoURL,
-        })
-      );
+      saveUserToLocalStorage(user);
     } catch (error) {
       console.error("Google Login Error:", error);
+    }
+  };
+
+  const handleGitHubLogin = async () => {
+    try {
+      const result = await signInWithPopup(auth, githubProvider);
+      const user = result.user;
+      saveUserToLocalStorage(user);
+    } catch (error) {
+      console.error("GitHub Login Error:", error);
     }
   };
 
@@ -35,10 +47,8 @@ const SignUp = () => {
       style={{ backgroundColor: isDark ? "#0f172a" : "#ffffff" }}
     >
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-10 lg:flex-row lg:gap-16">
-        {/* Left */}
         <div className="w-full lg:w-1/2">
           <div className="logo flex items-center justify-center lg:justify-start">
-            
             <GiStairsGoal className="text-6xl mb-3 text-[#2E7D6B]" />
             <h2
               className="ml-3 text-3xl font-bold transition-colors duration-300 sm:text-4xl lg:text-5xl"
@@ -66,7 +76,6 @@ const SignUp = () => {
           </div>
         </div>
 
-        {/* Right */}
         <div className="w-full lg:w-1/2">
           <div
             className="mx-auto w-full max-w-xl rounded-2xl p-5 text-center shadow-2xl transition-colors duration-300 sm:p-8"
@@ -103,6 +112,7 @@ const SignUp = () => {
               </button>
 
               <button
+                onClick={handleGitHubLogin}
                 className="flex w-full cursor-pointer items-center justify-center rounded border py-3 text-base font-bold transition hover:bg-[#2E7D6B] hover:text-white sm:w-40 sm:text-lg"
                 style={{
                   color: isDark ? "#f8fafc" : "#374151",
