@@ -1,5 +1,6 @@
-import { useTheme } from "../../context/ThemeContext";
+import { useTheme } from "../../Context/ThemeContext";
 
+useTheme
 const TestimonialCard = ({ image, name, role, quote }) => {
   const { theme } = useTheme();
   const isDark = theme === "dark";
